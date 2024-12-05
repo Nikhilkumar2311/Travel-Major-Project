@@ -16,3 +16,32 @@
         }, false)
     })
 })()
+
+// Total Taxes function
+let taxSwitch = document.getElementById("flexSwitchCheckDefault")
+    taxSwitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info")
+        for(info of taxInfo){
+            if(info.style.display != "inline"){
+                info.style.display = "inline"
+            } else {
+                info.style.display = "none"
+            }
+        }
+    })
+
+// Filteration
+document.querySelectorAll('.filter').forEach(filter => {
+    filter.addEventListener('click', function () {
+        const selectedFilter = this.getAttribute('data-filter');
+
+        fetch(`/listings?category=${selectedFilter}`)
+        .then(response => response.text())
+        .then(html => {
+        document.querySelector('.row').innerHTML = new DOMParser()
+            .parseFromString(html, 'text/html')
+            .querySelector('.row').innerHTML;
+        });
+    });
+});
+

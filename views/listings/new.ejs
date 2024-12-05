@@ -19,9 +19,30 @@
                 <div class="invalid-feedback">Description Should be valid</div>
             </div>
             
-            <div class="mb-3">
-                <label for="image" class="form-label">Upload Listing Image</label>
-                <input name="listing[image]" type="file" class="form-control"/>
+            <div class="row">
+                <div class="mb-3 col-md-8">
+                    <label for="image" class="form-label">Upload Listing Image</label>
+                    <input name="listing[image]" type="file" class="form-control" required/>
+                    <div class="valid-feedback">Image looks good!</div>
+                    <div class="invalid-feedback">Image Should be valid</div>
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="listing[category]" class="form-select" required>
+                        <option value="">Select a category</option>
+                        <option value="Rooms">Rooms</option>
+                        <option value="Lakes">Lakes</option>
+                        <option value="Mountains">Mountains</option>
+                        <option value="Beaches">Beaches</option>
+                        <option value="Pools">Pools</option>
+                        <option value="Forests">Forests</option>
+                        <option value="Farms">Farms</option>
+                        <option value="Arctic">Arctic</option>
+                        <option value="Boats">Boats</option>
+                    </select>
+                    <div class="valid-feedback">Category looks good!</div>
+                    <div class="invalid-feedback">Please select a category</div>
+                </div>
             </div>
 
             <div class="row">
