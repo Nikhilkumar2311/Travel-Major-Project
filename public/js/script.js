@@ -1,10 +1,8 @@
 (() => {
     'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -33,15 +31,19 @@ let taxSwitch = document.getElementById("flexSwitchCheckDefault")
 // Filteration
 document.querySelectorAll('.filter').forEach(filter => {
     filter.addEventListener('click', function () {
+        document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+
+        this.classList.add('active');
+
         const selectedFilter = this.getAttribute('data-filter');
 
         fetch(`/listings?category=${selectedFilter}`)
-        .then(response => response.text())
-        .then(html => {
-        document.querySelector('.row').innerHTML = new DOMParser()
-            .parseFromString(html, 'text/html')
-            .querySelector('.row').innerHTML;
-        });
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('.row').innerHTML = new DOMParser()
+                    .parseFromString(html, 'text/html')
+                    .querySelector('.row').innerHTML;
+            })
+            .catch(error => console.error('Error fetching filtered listings:', error));
     });
 });
-
