@@ -30,6 +30,17 @@ const listingSchema = new Schema({
         type: String,
         enum: ["Trending", "Rooms", "Lakes", "Mountains", "Beaches", "Pools", "Forests", "Farms", "Arctic", "Boats"],
         required: true
+    },
+    geometry: {
+        type:{
+            type: String,
+            default: 'Point',
+            required: true,
+        },
+        coordinates:{
+            type: [Number],
+            required: true,
+        }
     }
 });
 

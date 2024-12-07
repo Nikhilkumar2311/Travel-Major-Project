@@ -178,3 +178,9 @@ body {
     padding: 0.5rem 3rem 0.5rem 3rem !important;
     font-size: 0.9rem !important;
 }
+
+/* map  */
+#map { 
+    height: 400px;
+    width: 100%;
+}
