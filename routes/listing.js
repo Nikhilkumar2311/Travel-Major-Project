@@ -17,16 +17,8 @@ router
 // New Route
 router.get("/new",isLoggedIn, wrapAsync(listingController.renderNewForm))
 
-// Search Route
-router.get('/listings/search', async (req, res) => {
-    const locationQuery = req.query.location || '';
-
-    const results = await Listing.find({
-        location: { $regex: locationQuery, $options: 'i' }
-    }).limit(5);
-
-    res.json(results);
-});
+// search
+router.get('/search', wrapAsync(listingController.search));
 
 // Show and Update and Delete Routes
 router

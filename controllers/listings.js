@@ -9,6 +9,21 @@ module.exports.index = async(req, res) => {
     res.render("./listings/index.ejs", {allListings: listings})
 }
 
+// search
+module.exports.search = async (req, res) => {
+    const { query } = req.query;
+    const filter = query
+        ? { $or: [
+                { location: { $regex: query, $options: 'i' } },
+                { country: { $regex: query, $options: 'i' } }
+            ] }
+        : {};
+
+    const listings = await Listing.find(filter);
+    res.render('./listings/search.ejs', { listings, query });
+};
+
+
 // New
 module.exports.renderNewForm = async(req, res) => {
     res.render("./listings/new.ejs")

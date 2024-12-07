@@ -21,6 +21,9 @@ const userRouter = require("./routes/user.js")
 
 const MONGO_URL = "mongodb://localhost:27017/Travel"
 
+// Enable debug mode to log MongoDB queries
+mongoose.set('debug', true);
+
 main().then(()=>{
     console.log("Connected To DB");
 }).catch((err)=>{
@@ -48,10 +51,6 @@ const sessionOptions = {
         httpOnly: true,
     },
 };
-
-// app.get("/", (req,res)=>{
-//     res.send("Hi, I am root")
-// })
 
 app.use(session(sessionOptions))
 app.use(flash())
