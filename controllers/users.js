@@ -11,6 +11,14 @@ module.exports.signup = async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
 
+        // Password Validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+            req.flash("error", "Password must be at least 8 characters long and contain a mix of lowercase, uppercase, digits, and special characters.");
+            return res.redirect("/signup");
+        }
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             req.flash("error", "Email is already in use.");

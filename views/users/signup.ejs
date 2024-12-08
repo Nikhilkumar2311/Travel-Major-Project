@@ -18,12 +18,18 @@
                 <div class="invalid-feedback">Should be valid</div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 <label for="password" class="form-label">Password</label>
-                <input name="password" id="password" placeholder="Enter Password" type="password" class="form-control" required/>
-                <div class="valid-feedback">looks good!</div>
+                <div class="input-group">
+                    <input name="password" id="password" placeholder="Enter Password" type="password" class="form-control" required />
+                    <button type="button" id="togglePassword" class="btn btn-outline-secondary" style="cursor: pointer;">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+                <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Should be valid</div>
             </div>
+            
             <button class="btn btn-success mt-3">SignUp</button>
             <br><br>
 
