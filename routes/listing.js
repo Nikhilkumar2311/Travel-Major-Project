@@ -20,6 +20,9 @@ router.get("/new",isLoggedIn, wrapAsync(listingController.renderNewForm))
 // search
 router.get('/search', wrapAsync(listingController.search));
 
+// Email Verification
+router.get("/verify-email", wrapAsync(listingController.emailVerification));
+
 // Show and Update and Delete Routes
 router
     .route("/:id")

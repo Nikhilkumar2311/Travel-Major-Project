@@ -1,5 +1,6 @@
 const Listing = require("../models/listing")
 const axios = require('axios');
+const User = require("../models/user")
 
 // Index
 module.exports.index = async(req, res) => {
@@ -129,6 +130,36 @@ module.exports.updateListing = async(req,res) => {
 
     req.flash("success", "Listing Updated!!")
     res.redirect(`/listings/${id}`)
+}
+
+// Email verification
+module.exports.emailVerification = async (req, res) => {
+    const { token } = req.query;
+
+    if (!token) {
+        req.flash("error", "Invalid verification link.");
+        return res.redirect("/signup");
+    }
+
+    try {
+        // Find user by verification token
+        const user = await User.findOne({ verificationToken: token });
+        if (!user) {
+            req.flash("error", "Invalid or expired verification token.");
+            return res.redirect("/signup");
+        }
+
+        // Mark user as verified
+        user.isVerified = true;
+        user.verificationToken = undefined; // Clear the token after verification
+        await user.save();
+
+        req.flash("success", "Your email has been verified. You can now log in.");
+        res.redirect("/login");
+    } catch (e) {
+        req.flash("error", "An error occurred during email verification.");
+        res.redirect("/signup");
+    }
 }
 
 // delete

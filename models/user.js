@@ -7,8 +7,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
+    isVerified: { type: Boolean, default: false },
+    verificationToken: { type: String },
+    // resetPasswordToken: String,
+    // resetPasswordExpires: Date,
 });
 
 userSchema.plugin(passportLocalMongoose);
