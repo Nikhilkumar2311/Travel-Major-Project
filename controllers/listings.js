@@ -3,13 +3,21 @@ const axios = require('axios');
 const User = require("../models/user")
 
 // Index
-module.exports.index = async(req, res) => {
+module.exports.index = async (req, res) => {
     const { category } = req.query;
     const filter = category ? { category } : {};
 
     const listings = await Listing.find(filter);
-    res.render("./listings/index.ejs", {allListings: listings})
-}
+
+    // Detect AJAX requests via headers
+    if (req.xhr) {
+        return res.render("./listings/index.ejs", { allListings: listings, layout: false }); 
+    }
+
+    // Standard page rendering for normal requests
+    res.render("./listings/index.ejs", { allListings: listings });
+};
+
 
 // search
 module.exports.search = async (req, res) => {
@@ -151,7 +159,7 @@ module.exports.emailVerification = async (req, res) => {
 
         // Mark user as verified
         user.isVerified = true;
-        user.verificationToken = undefined; // Clear the token after verification
+        user.verificationToken = undefined;
         await user.save();
 
         req.flash("success", "Your email has been verified. You can now log in.");

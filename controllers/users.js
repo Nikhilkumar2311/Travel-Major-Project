@@ -182,8 +182,8 @@ module.exports.verifyOTP = async (req, res, next) => {
 
         // Reset the password
         await user.setPassword(password);
-        user.passwordResetOTP = undefined; // Clear the reset token
-        user.passwordResetOTPExpires = undefined; // Clear the expiry date
+        user.passwordResetOTP = undefined;
+        user.passwordResetOTPExpires = undefined;
         await user.save();
 
         req.flash("success", "Your password has been reset. You can now log in.");
