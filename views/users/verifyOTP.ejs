@@ -1,0 +1,45 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<h1 class="col-6 offset-3">Verify OTP</h1>
+<div class="row col-6 offset-3">
+    <% if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } %>
+    <% if (messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+
+    <form action="/verifyOTP" method="POST">
+        <!-- Hidden input for email -->
+        <input type="hidden" name="email" value="<%= email %>">
+        
+        <!-- OTP field -->
+        <div class="mb-3">
+            <label for="otp" class="form-label">Enter OTP</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="otp" 
+                name="otp" 
+                placeholder="Enter OTP" 
+                required>
+        </div>
+        
+        <!-- Password field -->
+        <div class="mb-3">
+            <label for="password" class="form-label">New Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password" 
+                placeholder="Enter new password" 
+                required>
+                <button type="button" id="togglePassword" class="btn btn-outline-secondary" style="cursor: pointer;">
+                    <i class="bi bi-eye"></i>
+                </button>
+        </div>
+        
+        <button type="submit" class="btn btn-success add-btn">Reset Password</button>
+    </form>
+</div>

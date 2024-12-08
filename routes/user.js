@@ -18,9 +18,30 @@ router
     .get(userController.renderLoginForm)
     .post(saveRedirectUrl, passport.authenticate("local", { failureRedirect: '/login', failureFlash: true}), wrapAsync(userController.login))
 
-// Forget Password
-//TODO     
+// Render Forgot Password Page
+router
+    .get("/forgotPassword", (req, res) => {
+    res.render("users/forgotPassword");
+});
 
+// Handle Forgot Password Logic
+router.post("/forgotPassword", userController.forgotPassword);    
+
+// Render OTP Form
+router.get("/verifyOTP", (req, res) => {
+    const { email } = req.query;
+
+    if (!email) {
+        req.flash("error", "Email is required.");
+        return res.redirect("/forgotPassword");
+    }
+
+    res.render("users/verifyOTP", { email });
+});
+
+router.post("/verifyOTP", userController.verifyOTP);
+
+// Logout
 router.get("/logout", userController.logout)
 
 module.exports = router

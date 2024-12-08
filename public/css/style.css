@@ -160,6 +160,34 @@ body {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    #filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .tax-toggle {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter p {
+        font-size: 0.7rem;
+    }
+
+    .tax-toggle {
+        height: 2.5rem;
+        padding: 0.6rem;
+    }
+}
+
 /* Search Button */
 .btn-search {
     background-color: #fe424d !important;
@@ -183,4 +211,8 @@ body {
 #map { 
     height: 400px;
     width: 100%;
+}
+
+.forget:hover {
+    text-decoration: underline;
 }
