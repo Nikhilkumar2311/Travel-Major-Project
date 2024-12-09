@@ -1,10 +1,10 @@
 # VoyageVista 🌍
 
-VoyageVista is a web application designed to help users explore and manage travel destinations. It provides an intuitive interface to browse listings of various places, complete with descriptions, images, pricing, and location details.
+VoyageVista is a web application designed to help users explore and manage travel destinations. It provides an intuitive interface to browse listings of various places, complete with descriptions, images, pricing, and location details. I have Used MVC (Model View Controller) Architecture.
 
 ---
 
-https://github.com/user-attachments/assets/2eb61d39-0f49-48ff-a057-c8bd4062ca03
+https://github.com/user-attachments/assets/72ce5b6d-b3cf-42d2-b233-bdd47827cf26
 
 ---
 
@@ -41,23 +41,6 @@ https://github.com/user-attachments/assets/2eb61d39-0f49-48ff-a057-c8bd4062ca03
     npm start
 
 5. Open your browser and navigate to http://localhost:8080.
-
----
-
-## Project Structure 📂
-
-I have Used MVC Architecture
-
-VoyageVista/
-├── controllers/    # All Controllers are here 
-├── public/         # Static assets (CSS, images, JS)
-├── views/          # EJS templates
-├── routes/         # Express routes
-├── models/         # Mongoose schemas
-├── app.js          # Main application file
-├── .env.example    # Example environment variables
-├── package.json    # Project metadata and dependencies
-└── README.md       # Project documentation
 
 ---
 
