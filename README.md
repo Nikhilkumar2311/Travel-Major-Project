@@ -60,3 +60,4 @@ Contributions are welcome! Please follow these steps:
 
 If you have any questions or suggestions, feel free to reach out!
 GitHub: Nikhilkumar2311
+Email: nk4873300@gmail.com
