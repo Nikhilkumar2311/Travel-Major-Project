@@ -3,6 +3,7 @@
 <div class="container mt-5">
     <h1>Search Results for "<%= query %>"</h1>
 
+    <!-- Search Listings -->
     <% if (searchedListings.length > 0) { %>
         <% for(let listing of searchedListings){ %>
             <a href="/listings/<%= listing._id %>" class="listing-link">
