@@ -21,7 +21,6 @@ const reviewRouter = require("./routes/review.js")
 const userRouter = require("./routes/user.js")
 const { error } = require('console')
 
-// const MONGO_URL = "mongodb://localhost:27017/Travel"
 const dburl = process.env.ATLASDB_URL;
 
 main().then(()=>{
